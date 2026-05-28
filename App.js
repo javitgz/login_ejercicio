@@ -1,7 +1,7 @@
 require('dotenv').config(); // importa las variables del entorno
 const express = require('express');
 const mongoose = require('mongoose');
-const usuarioRouter = require('./routes/usuarios');
+const usuariosRouter = require('./routes/usuarios');
 
 const app = express();
 app.use(express.json());
