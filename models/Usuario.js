@@ -16,10 +16,11 @@ const usuarioSchema = new mongoose.Schema({
 });
 
 // Proceso intermedio de encriptación de contraseña antes de guardarla
-usuarioSchema.pre('save', async function (next) {
-    if (!this.isModified('password')) return next();
+usuarioSchema.pre('save', async function () {
+    // Si la contaseña no cambio, salimos de la funcion
+    if (!this.isModified('password')) return;
+    // Encriptamos y guardamos en el mismo documento
     this.password = await bcrypt.hash(this.password, 10);
-    next();
 });
 
 // Metodo para compara contraseñas
@@ -28,4 +29,3 @@ usuarioSchema.methods.compararPassword = function (password) {
 };
 
 module.exports = mongoose.model('Usuario', usuarioSchema);
-

@@ -1,7 +1,7 @@
 require('dotenv').config(); // importa las variables del entorno
 const express = require('express');
 const mongoose = require('mongoose');
-const usuariosRouter = require('./routes/usuarios');
+const usuarioRouter = require('./routes/usuarios');
 
 const app = express();
 app.use(express.json());
@@ -19,7 +19,7 @@ mongoose.connect(mongoURI)
 
 
 // Rutas
-app.use('/usuarios', usuariosRouter);
+app.use('/usuarios', usuarioRouter);
 
 // Puerto del servidor .env
 const appPort = process.env.SERVER_PORT;
